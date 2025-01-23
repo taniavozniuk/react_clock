@@ -62,29 +62,32 @@ export class App extends React.Component<{}, State> {
     // console.log('componentWillUnmount');
   }
 
-  componentDidUpdate(prevProps: {}, prevState: State): void {
+  componentDidUpdate(_: {}, prevState: State): void {
+    if (prevState.clockName !== this.state.clockName) {
       console.warn(`Renamed from ${prevState.clockName} to ${this.state.clockName}`);
     }
-}
-  
-  render() {
-    const { clockName, time, hasClock } = this.state;
-
-    return (
-      <div className="App">
-        <h1>React Clock</h1>
-
-        {hasClock && (
-          <div className="Clock">
-            <strong className="Clock__name">{clockName}</strong>
-            {' time is '}
-            <span className="Clock__time">{time}</span>
-          </div>
-        )}
-      </div>
-    );
   }
 }
+
+render() {
+  const { clockName, time, hasClock } = this.state;
+
+  return (
+    <div className="App">
+      <h1>React Clock</h1>
+
+      {hasClock && (
+        <div className="Clock">
+          <strong className="Clock__name">{clockName}</strong>
+          {' time is '}
+          <span className="Clock__time">{time}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
 // const [clockName, setClockName] = useState(getRandomName());
 // const [time, setTime] = useState(new Date().toUTCString().slice(-12, -4));
 
