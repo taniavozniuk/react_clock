@@ -21,14 +21,14 @@ export class Clock extends React.Component<ClockPorops, State> {
 
       this.setState({ currentTime });
       // eslint-disable-next-line no-console
-      console.warn(currentTime);
+      console.log(currentTime);
     }, 1000);
   }
 
   componentDidUpdate(prevProps: Readonly<ClockPorops>): void {
     if (prevProps.name !== this.props.name) {
       // eslint-disable-next-line no-console
-      console.debug(`Renamed from ${prevProps.name} to ${this.props.name}`);
+      console.warn(`Renamed from ${prevProps.name} to ${this.props.name}`);
     }
   }
 
